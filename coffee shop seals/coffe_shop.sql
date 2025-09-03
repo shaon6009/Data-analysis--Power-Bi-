@@ -240,7 +240,7 @@ SELECT
 -- WHEN DAYOFWEEK(transaction_date) = 7 THEN 'Saturday'
 -- ELSE 'Sunday'
 -- END;
-
+ 
 -- TO GET SALES FOR ALL HOURS FOR MONTH OF MAY
 -- SELECT
 -- HOUR(transaction_time) AS Hour_of_Day,
