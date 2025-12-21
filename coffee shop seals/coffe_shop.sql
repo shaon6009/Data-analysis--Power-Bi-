@@ -17,35 +17,35 @@ MODIFY COLUMN transaction_time TIME;
 DATA TYPES OF DIFFERENT COLUMNS
 DESCRIBE coffee_shop_sales;
 
--- CHANGE COLUMN NAME `ï»¿transaction_id` to transaction_id
--- ALTER TABLE coffee_shop_sales
--- CHANGE COLUMN `ï»¿transaction_id` transaction_id INT;
+CHANGE COLUMN NAME `ï»¿transaction_id` to transaction_id
+ALTER TABLE coffee_shop_sales
+CHANGE COLUMN `ï»¿transaction_id` transaction_id INT;
 
--- TOTAL SALES
--- SELECT ROUND(SUM(unit_price * transaction_qty)) as Total_Sales
--- FROM coffee_shop_sales
--- WHERE MONTH(transaction_date) = 5 -- for month of (CM-May)
+TOTAL SALES
+SELECT ROUND(SUM(unit_price * transaction_qty)) as Total_Sales
+FROM coffee_shop_sales
+WHERE MONTH(transaction_date) = 5 -- for month of (CM-May)
 
--- TOTAL SALES KPI - MOM DIFFERENCE AND MOM GROWTH
--- SELECT
--- MONTH(transaction_date) AS month,
--- ROUND(SUM(unit_price * transaction_qty)) AS total_sales,
--- (SUM(unit_price * transaction_qty) - LAG(SUM(unit_price * transaction_qty), 1)
--- OVER (ORDER BY MONTH(transaction_date))) / LAG(SUM(unit_price * transaction_qty), 1)
--- OVER (ORDER BY MONTH(transaction_date)) * 100 AS mom_increase_percentage
--- FROM
--- coffee_shop_sales
--- WHERE
--- MONTH(transaction_date) IN (4, 5) -- for months of April and May
--- GROUP BY
--- MONTH(transaction_date)
--- ORDER BY
--- MONTH(transaction_date);
+TOTAL SALES KPI - MOM DIFFERENCE AND MOM GROWTH
+SELECT
+MONTH(transaction_date) AS month,
+ROUND(SUM(unit_price * transaction_qty)) AS total_sales,
+(SUM(unit_price * transaction_qty) - LAG(SUM(unit_price * transaction_qty), 1)
+OVER (ORDER BY MONTH(transaction_date))) / LAG(SUM(unit_price * transaction_qty), 1)
+OVER (ORDER BY MONTH(transaction_date)) * 100 AS mom_increase_percentage
+FROM
+coffee_shop_sales
+WHERE
+MONTH(transaction_date) IN (4, 5) -- for months of April and May
+GROUP BY
+MONTH(transaction_date)
+ORDER BY
+MONTH(transaction_date);
 
--- TOTAL ORDERS
--- SELECT COUNT(transaction_id) as Total_Orders
--- FROM coffee_shop_sales
--- WHERE MONTH (transaction_date)= 5 -- for month of (CM-May)
+TOTAL ORDERS
+SELECT COUNT(transaction_id) as Total_Orders
+FROM coffee_shop_sales
+WHERE MONTH (transaction_date)= 5 -- for month of (CM-May)
 
 -- TOTAL ORDERS KPI - MOM DIFFERENCE AND MOM GROWTH
 -- SELECT
