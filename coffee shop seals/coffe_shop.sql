@@ -104,31 +104,31 @@ coffee_shop_sales
 WHERE
 transaction_date = '2023-05-18'; --For 18 May 2023
 
--- SALES TREND OVER PERIOD
--- SELECT AVG(total_sales) AS average_sales
--- FROM (
--- SELECT
--- SUM(unit_price * transaction_qty) AS total_sales
--- FROM
--- coffee_shop_sales
--- WHERE
--- MONTH(transaction_date) = 5 -- Filter for May
--- GROUP BY
--- transaction_date
--- ) AS internal_query;
+SALES TREND OVER PERIOD
+SELECT AVG(total_sales) AS average_sales
+FROM (
+SELECT
+SUM(unit_price * transaction_qty) AS total_sales
+FROM
+coffee_shop_sales
+WHERE
+MONTH(transaction_date) = 5 -- Filter for May
+GROUP BY
+transaction_date
+) AS internal_query;
 
--- DAILY SALES FOR MONTH SELECTED
--- SELECT
--- DAY(transaction_date) AS day_of_month,
--- ROUND(SUM(unit_price * transaction_qty),1) AS total_sales
--- FROM
--- coffee_shop_sales
--- WHERE
--- MONTH(transaction_date) = 5 -- Filter for May
--- GROUP BY
--- DAY(transaction_date)
--- ORDER BY
--- DAY(transaction_date);
+DAILY SALES FOR MONTH SELECTED
+SELECT
+DAY(transaction_date) AS day_of_month,
+ROUND(SUM(unit_price * transaction_qty),1) AS total_sales
+FROM
+coffee_shop_sales
+WHERE
+MONTH(transaction_date) = 5 -- Filter for May
+GROUP BY
+DAY(transaction_date)
+ORDER BY
+DAY(transaction_date);
 
 -- COMPARING DAILY SALES WITH AVERAGE SALES – IF GREATER THAN “ABOVE AVERAGE” and LESSER THAN “BELOW AVERAGE”
 SELECT
