@@ -171,36 +171,36 @@ WHEN DAYOFWEEK(transaction_date) IN (1, 7) THEN 'Weekends'
 ELSE 'Weekdays'
 END;
 
--- SALES BY STORE LOCATION
--- SELECT
--- store_location,
--- SUM(unit_price * transaction_qty) as Total_Sales
--- FROM coffee_shop_sales
--- WHERE
--- MONTH(transaction_date) =5
--- GROUP BY store_location
--- ORDER BY SUM(unit_price * transaction_qty) DESC
+SALES BY STORE LOCATION
+SELECT
+store_location,
+SUM(unit_price * transaction_qty) as Total_Sales
+FROM coffee_shop_sales
+WHERE
+MONTH(transaction_date) =5
+GROUP BY store_location
+ORDER BY SUM(unit_price * transaction_qty) DESC
 
--- SALES BY PRODUCT CATEGORY
--- SELECT
--- product_category,
--- ROUND(SUM(unit_price * transaction_qty),1) as Total_Sales
--- FROM coffee_shop_sales
--- WHERE
--- MONTH(transaction_date) = 5
--- GROUP BY product_category
--- ORDER BY SUM(unit_price * transaction_qty) DESC
+SALES BY PRODUCT CATEGORY
+SELECT
+product_category,
+ROUND(SUM(unit_price * transaction_qty),1) as Total_Sales
+FROM coffee_shop_sales
+WHERE
+MONTH(transaction_date) = 5
+GROUP BY product_category
+ORDER BY SUM(unit_price * transaction_qty) DESC
 
--- SALES BY PRODUCTS (TOP 10)
--- SELECT
--- product_type,
--- ROUND(SUM(unit_price * transaction_qty),1) as Total_Sales
--- FROM coffee_shop_sales
--- WHERE
--- MONTH(transaction_date) = 5
--- GROUP BY product_type
--- ORDER BY SUM(unit_price * transaction_qty) DESC
--- LIMIT 10
+SALES BY PRODUCTS (TOP 10)
+SELECT
+product_type,
+ROUND(SUM(unit_price * transaction_qty),1) as Total_Sales
+FROM coffee_shop_sales
+WHERE
+MONTH(transaction_date) = 5
+GROUP BY product_type
+ORDER BY SUM(unit_price * transaction_qty) DESC
+LIMIT 10
 
 -- SALES BY DAY | HOUR
 -- SELECT
